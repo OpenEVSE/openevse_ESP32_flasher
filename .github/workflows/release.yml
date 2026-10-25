@@ -55,10 +55,17 @@ jobs:
           if [ "$RUNNER_OS" = Windows ]; then
             # Compile PyInstaller's bootloader from source: the stock prebuilt
             # one is shared with a lot of malware and is widely flagged by
-            # antivirus / Chrome Safe Browsing. Fall back to the wheel if the
-            # build fails.
-            PYINSTALLER_COMPILE_BOOTLOADER=1 pip install --no-binary pyinstaller pyinstaller \
-              || pip install pyinstaller
+            # antivirus / Chrome Safe Browsing. Falls back to the wheel if the
+            # compile fails.
+            (
+              set -e
+              pip download --no-deps --no-binary :all: pyinstaller -d pi_src
+              tar xzf pi_src/pyinstaller-*.tar.gz -C pi_src
+              cd pi_src/pyinstaller-*/bootloader
+              python ./waf all --target-arch=64bit
+              cd ..
+              pip install .
+            ) || { echo "::warning::Bootloader compile failed - using stock PyInstaller"; pip install pyinstaller; }
           else
             pip install pyinstaller
           fi
