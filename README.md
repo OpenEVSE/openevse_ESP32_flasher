@@ -42,7 +42,7 @@ The flasher reads the ESP32's flash size over USB and picks the matching build a
 
 ### Pre-built executable (recommended)
 
-Download `OpenEVSE_ESP32_Flasher-<windows|macos|linux>.zip` from the Releases page, unzip it and run
+Download `OpenEVSE_ESP32_Flasher-<windows|macos-arm64|macos-intel|linux>.zip` from the Releases page, unzip it and run
 `OpenEVSE_ESP32_Flasher`. You don't need to install Python or anything else.
 
 > macOS: the app is unsigned. Right-click → **Open** the first time.
@@ -188,7 +188,7 @@ The build does the following:
 4. Builds a single-file executable with esptool's flasher stubs embedded.
 5. Smoke-tests the bundled esptool.
 
-Pushing a `v*.*.*` tag makes GitHub Actions build all three platforms and attach them to a release
+Every push builds Windows, macOS (Apple Silicon and Intel) and Linux executables as workflow artifacts. Pushing a `v*.*.*` tag also attaches them to a GitHub Release
 (`.github/workflows/release.yml`).
 
 > Silicon Labs sometimes blocks automated downloads of the CP210x driver. If the build log shows a

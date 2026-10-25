@@ -31,8 +31,11 @@ jobs:
           - os: windows-latest
             platform: windows
             exe: dist/OpenEVSE_ESP32_Flasher.exe
-          - os: macos-latest
-            platform: macos
+          - os: macos-14          # Apple Silicon (arm64)
+            platform: macos-arm64
+            exe: dist/OpenEVSE_ESP32_Flasher
+          - os: macos-13          # Intel (x86_64)
+            platform: macos-intel
             exe: dist/OpenEVSE_ESP32_Flasher
           - os: ubuntu-22.04      # older glibc = runs on more distros
             platform: linux
