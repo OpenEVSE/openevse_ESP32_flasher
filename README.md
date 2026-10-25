@@ -63,7 +63,7 @@ You need Python 3.8+ with Tk (`sudo apt install python3-tk` on Debian/Ubuntu).
 ## Flashing
 
 1. **Connect the USB-serial programmer** to the 6-pin header of the OpenEVSE WiFi module and to your computer.
-   An example is the [OpenEnergyMonitor USB-to-serial programmer](https://shop.openenergymonitor.com/programmer-usb-to-serial-uart/).
+   An example is the [OpenEVSE USB-to-serial programmer](https://store.openevse.com/collections/all-products/products/usb-to-serial-comm).
 2. **Select the port** (adapters with CP210x / CH340 / FTDI chips are picked automatically).
 3. Click **Detect ESP32**. The chip, flash size and current layout are shown.
 4. **Choose the board**: *OpenEVSE WiFi V1* or *OpenEVSE TFT WiFi V1*. The *Target* line shows the file that will be flashed.
