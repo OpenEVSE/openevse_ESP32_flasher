@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+build/
+dist/
+release/
+vendor/
+*.zip
+*.spec.bak
+# downloaded by scripts/fetch_drivers.py
+drivers/windows/CP210x/
+drivers/windows/CH341SER/

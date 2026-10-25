@@ -1,0 +1,4 @@
+# Bundled into the PyInstaller build, or installed into ./vendor by run.sh / run.bat
+esptool>=5.0,<6
+pyserial>=3.5
+certifi
