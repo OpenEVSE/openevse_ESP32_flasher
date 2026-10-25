@@ -22,7 +22,7 @@ if exist release rmdir /s /q release
 %PYTHON% -m PyInstaller --noconfirm openevse_esp32_flasher.spec || exit /b 1
 
 mkdir release
-copy dist\OpenEVSE_ESP32_Flasher.exe release\ >nul
+xcopy /e /i /q dist\OpenEVSE_ESP32_Flasher release >nul
 copy README.md release\ >nul
 powershell -NoProfile -Command "Compress-Archive -Path release\* -DestinationPath OpenEVSE_ESP32_Flasher-windows.zip -Force"
 echo Done!  Output: OpenEVSE_ESP32_Flasher-windows.zip

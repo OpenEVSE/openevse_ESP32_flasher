@@ -45,8 +45,24 @@ The flasher reads the ESP32's flash size over USB and picks the matching build a
 Download `OpenEVSE_ESP32_Flasher-<windows|macos-arm64|macos-intel|linux>.zip` from the Releases page, unzip it and run
 `OpenEVSE_ESP32_Flasher`. You don't need to install Python or anything else.
 
-> macOS: the app is unsigned. Right-click → **Open** the first time.
-> Linux: `chmod +x OpenEVSE_ESP32_Flasher` if needed.
+> **Windows:** unzip the whole folder and run `OpenEVSE_ESP32_Flasher.exe` inside it. Keep the `_internal`
+> folder next to it.
+> **macOS:** the app is unsigned. Right-click → **Open** the first time.
+> **Linux:** `chmod +x OpenEVSE_ESP32_Flasher` if needed.
+
+#### "This file may be dangerous" / SmartScreen warnings
+
+Until the Windows build is code-signed, Chrome, Edge and SmartScreen may warn about it. They warn about
+any new, unsigned program that few people have downloaded yet. The file is built from this repository's
+source by GitHub Actions, and each run's log shows exactly what went into it.
+
+- **Chrome:** open the downloads list (Ctrl+J). Next to the file, choose **Keep**, then **Keep anyway**.
+- **SmartScreen** ("Windows protected your PC"): click **More info**, then **Run anyway**.
+
+**For maintainers:** signing removes these warnings. Add the repository secrets `WINDOWS_CERT_PFX` (the
+base64-encoded `.pfx`) and `WINDOWS_CERT_PASSWORD`, and the workflow signs `OpenEVSE_ESP32_Flasher.exe`
+automatically. Open-source projects can get free signing through [SignPath Foundation](https://signpath.org).
+[Azure Trusted Signing](https://learn.microsoft.com/azure/trusted-signing/) is a low-cost alternative.
 
 ### From source
 
